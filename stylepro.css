@@ -1,0 +1,396 @@
+/* ================= RESET E FONTES ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #0d0c1d;
+  color: #fff;
+}
+
+/* ================= HEADER E NAV ================= */
+header {
+  background: linear-gradient(to right, #7b2cbf, #9d4edd);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid #5a189a;
+}
+
+header img {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+nav {
+  margin-top: 15px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  padding: 8px 15px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ================= CONTAINER PRINCIPAL ================= */
+.container {
+  padding: 30px 5%;
+}
+
+h2 {
+  color: #c77dff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ================= FILTRO DE CATEGORIAS ================= */
+.filtro-categorias {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #c77dff;
+}
+
+.filtro-categorias label {
+  font-size: 1.1rem;
+}
+
+.filtro-categorias select {
+  background-color: #1b1b2f;
+  border: 2px solid #7b2cbf;
+  color: #c77dff;
+  padding: 8px 15px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  min-width: 180px;
+}
+
+.filtro-categorias select:hover,
+.filtro-categorias select:focus {
+  outline: none;
+  border-color: #9d4edd;
+  background-color: #2a2a4a;
+}
+
+/* ================= LOOP DE CARDS ================= */
+.cards-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.cards-track {
+  display: flex;
+  gap: 20px;
+  animation: scrollLoop 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.card {
+  background-color: #1b1b2f;
+  border: 1px solid #5a189a;
+  border-radius: 15px;
+  padding: 20px;
+  min-width: 300px;
+  flex-shrink: 0;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px #5a189a;
+}
+
+.card h3 {
+  color: #c77dff;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.card button {
+  background: linear-gradient(to right, #5a189a, #7b2cbf);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.card button:hover {
+  background: linear-gradient(to right, #7b2cbf, #9d4edd);
+}
+
+/* ================= INDICADOR 10+ FIXO ================= */
+.more-indicator {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  background: #c77dff;
+  color: #000;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ================= INTEGRAÇÃO ================= */
+.integracao {
+  margin-top: 50px;
+  background-color: #121020;
+  border: 1px solid #5a189a;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.integracao h3 {
+  color: #c77dff;
+  margin-bottom: 15px;
+}
+
+.integracao p {
+  color: #ccc;
+}
+
+/* ================= FORMULÁRIO PROJETO EM ANDAMENTO ================= */
+.formulario-projeto {
+  margin-top: 50px;
+  background-color: #1b1b2f;
+  border: 2px solid #7b2cbf;
+  border-radius: 20px;
+  padding: 30px 25px;
+  box-shadow: 0 0 20px #7b2cbf88;
+}
+
+.formulario-projeto h3 {
+  color: #c77dff;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Labels */
+.formulario-projeto label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #c77dff;
+  font-size: 1rem;
+}
+
+/* Textarea */
+.formulario-projeto textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: #ddd;
+  background-color: #121020;
+  border: 2px solid #7b2cbf;
+  border-radius: 15px;
+  transition: border-color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.formulario-projeto textarea:focus {
+  outline: none;
+  border-color: #9d4edd;
+  background-color: #1a1a3a;
+}
+
+/* Select dentro do formulário */
+.formulario-projeto select {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #c77dff;
+  background-color: #121020;
+  border: 2px solid #7b2cbf;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.formulario-projeto select:hover,
+.formulario-projeto select:focus {
+  outline: none;
+  border-color: #9d4edd;
+  background-color: #1a1a3a;
+}
+
+/* Input file estilizado */
+.formulario-projeto input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 1rem;
+  color: #c77dff;
+  background-color: #121020;
+  border: 2px solid #7b2cbf;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.formulario-projeto input[type="file"]:hover,
+.formulario-projeto input[type="file"]:focus {
+  outline: none;
+  border-color: #9d4edd;
+  background-color: #1a1a3a;
+}
+
+/* Botão do formulário */
+.formulario-projeto button {
+  background: linear-gradient(to right, #7b2cbf, #9d4edd);
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.25s ease;
+  margin-top: 15px;
+  align-self: flex-start;
+  box-shadow: 0 0 10px #9d4edd88;
+}
+
+.formulario-projeto button:hover {
+  background: linear-gradient(to right, #9d4edd, #7b2cbf);
+  transform: scale(1.05);
+}
+
+/* ================= OUTROS AJUSTES ================= */
+.pedido-info p {
+  color: #ccc;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+/* ================= BOTÃO VOLTAR ================= */
+.btn-voltar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(90deg, #7b2cbf, #9d4edd);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #9d4edd;
+  transition: background 0.3s ease;
+  z-index: 10000;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.btn-voltar:hover {
+  background: linear-gradient(90deg, #9d4edd, #7b2cbf);
+}
+
+/* ================= RESPONSIVO ================= */
+@media screen and (max-width: 768px) {
+  nav a {
+    display: block;
+    margin: 10px auto;
+    width: fit-content;
+  }
+
+  .card {
+    width: 100%;
+    min-width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .filtro-categorias {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .filtro-categorias select {
+    width: 100%;
+  }
+
+  .formulario-projeto {
+    padding: 20px 15px;
+  }
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 25px;
+  cursor: pointer;
+  background: linear-gradient(to right, #7b2cbf, #9d4edd);
+  color: white;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  user-select: none;
+  border: none;
+  box-shadow: 0 0 12px #9d4edd88;
+  margin-top: 8px;
+}
+
+.custom-file-upload:hover {
+  background: linear-gradient(to right, #9d4edd, #7b2cbf);
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+
+#nomeArquivoSelecionado {
+  display: inline-block;
+  margin-left: 15px;
+  color: #c77dff;
+  font-style: italic;
+  font-size: 0.9rem;
+}

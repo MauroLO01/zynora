@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zynora</title>
+    <link rel="stylesheet" href="stylecli.css">
+</head>
+
+<body>
+    <header>
+        <strong>
+            <h1>Zynora</h1>
+        </strong>
+        <p>Novas ideias para novos mercados</p>
+        <a href="#Voltaraoinício" class="btm">Voltar ao início</a>
+    </header>
+
+    <section class="st">
+        <h2>Solicite seu site de forma mais divertida!</h2>
+        <p class="subtittle">Estamos prontos para montar seu futuro digital.</p>
+    </section>
+
+    <form onsubmit="event.preventDefault(); alert('Site solicitado com sucesso!');" class="form-container">
+
+        <!-- PERGUNTA 1 -->
+        <div class="question">
+            <p><strong>Qual imagem desejas para seu produto?</strong></p>
+            <label><input type="radio" name="imagem" value="A"> Ousada e energética <span class="sub">(Cores quentes,
+                    fontes marcantes, layout impactante.)</span></label>
+            <label><input type="radio" name="imagem" value="B"> Calma e confiança <span class="sub">(Cores frias, layout
+                    clean, fontes suaves)</span></label>
+            <label><input type="radio" name="imagem" value="C"> Fofura e delicadeza <span class="sub">(Cores pastel,
+                    ilustrações, tipografia fofa)</span></label>
+            <label><input type="radio" name="imagem" value="D"> Inteligente e profissional <span class="sub">(Visual
+                    limpo, cores neutras, fontes sérias)</span></label>
+            <label><input type="radio" name="imagem" value="E"> Divertido e criativo <span class="sub">(Cores vibrantes,
+                    elementos animados, interação)</span></label>
+        </div>
+
+        <!-- PERGUNTA 2 -->
+        <div class="question">
+            <p><strong>Se seu site fosse uma pessoa, como ele seria?</strong></p>
+            <label><input type="radio" name="personalidade" value="A"> Um empresário de salto alto 💼</label>
+            <label><input type="radio" name="personalidade" value="B"> Um artista criativo cheio de ideias 🎨</label>
+            <label><input type="radio" name="personalidade" value="C"> Uma fada do design delicada 🧚</label>
+            <label><input type="radio" name="personalidade" value="D"> Um nerd da tecnologia que sabe tudo 🤓</label>
+            <label><input type="radio" name="personalidade" value="E"> Um vendedor que encanta qualquer um 🤑</label>
+            <label><input type="radio" name="personalidade" value="F"> Uma influenciadora que arrasa no feed 💅</label>
+        </div>
+
+        <!-- PERGUNTA 3 -->
+        <div class="question">
+            <p><strong>O que você quer que o visitante sinta?</strong></p>
+            <label><input type="radio" name="sentimento" value="A"> Confiança 🤝</label>
+            <label><input type="radio" name="sentimento" value="B"> Encantamento 😍</label>
+            <label><input type="radio" name="sentimento" value="C"> Curiosidade 🤔</label>
+            <label><input type="radio" name="sentimento" value="D"> Urgência ⚡</label>
+            <label><input type="radio" name="sentimento" value="E"> Calma 🧘</label>
+            <label><input type="radio" name="sentimento" value="F"> Desejo de comprar 🛍️</label>
+        </div>
+
+        <button type="submit" class="botao-dev">Enviar sua incrível ideia!</button>
+    </form>
+    </div>
+</body>
+
+</html>
