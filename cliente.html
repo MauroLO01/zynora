@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zynora</title>
+    <link rel="stylesheet" href="stylecli.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="./zynoralogo-removebg-preview.png" alt="zynora.ai" class="logo">
+            <strong>
+                <h1 class="titulo-site">Zynora</h1>
+            </strong>
+        </div>
+        <p>Novas ideias para novos mercados</p>
+        <button class="btm" onclick="window.location.href='index.html'">Voltar ao início</button>
+    </header>
+
+    <section class="st">
+        <h2>Solicite seu site de forma mais divertida!</h2>
+        <p class="subtittle">Estamos prontos para montar seu futuro digital.</p>
+    </section>
+
+    <form onsubmit="event.preventDefault(); alert('Site solicitado com sucesso!');" class="form-container">
+
+        <!-- PERGUNTA 1 -->
+        <div class="question">
+            <p><strong>Qual imagem desejas para seu produto?</strong></p>
+            <label><input type="radio" name="imagem" value="A"> Ousada e energética <span class="sub">(Cores quentes,
+                    fontes marcantes, layout impactante.)</span></label>
+            <label><input type="radio" name="imagem" value="B"> Calma e confiança <span class="sub">(Cores frias, layout
+                    clean, fontes suaves)</span></label>
+            <label><input type="radio" name="imagem" value="C"> Fofura e delicadeza <span class="sub">(Cores pastel,
+                    ilustrações, tipografia fofa)</span></label>
+            <label><input type="radio" name="imagem" value="D"> Inteligente e profissional <span class="sub">(Visual
+                    limpo, cores neutras, fontes sérias)</span></label>
+            <label><input type="radio" name="imagem" value="E"> Divertido e criativo <span class="sub">(Cores vibrantes,
+                    elementos animados, interação)</span></label>
+        </div>
+
+        <!-- PERGUNTA 2 -->
+        <div class="question">
+            <p><strong>Se seu site fosse uma pessoa, como ele seria?</strong></p>
+            <label><input type="radio" name="personalidade" value="A"> Um empresário de salto alto 💼</label>
+            <label><input type="radio" name="personalidade" value="B"> Um artista criativo cheio de ideias 🎨</label>
+            <label><input type="radio" name="personalidade" value="C"> Uma fada do design delicada 🧚</label>
+            <label><input type="radio" name="personalidade" value="D"> Um nerd da tecnologia que sabe tudo 🤓</label>
+            <label><input type="radio" name="personalidade" value="E"> Um vendedor que encanta qualquer um 🤑</label>
+            <label><input type="radio" name="personalidade" value="F"> Uma influenciadora que arrasa no feed 💅</label>
+        </div>
+
+        <!-- PERGUNTA 3 -->
+        <div class="question">
+            <p><strong>O que você quer que o visitante sinta?</strong></p>
+            <label><input type="radio" name="sentimento" value="A"> Confiança 🤝</label>
+            <label><input type="radio" name="sentimento" value="B"> Encantamento 😍</label>
+            <label><input type="radio" name="sentimento" value="C"> Curiosidade 🤔</label>
+            <label><input type="radio" name="sentimento" value="D"> Urgência ⚡</label>
+            <label><input type="radio" name="sentimento" value="E"> Calma 🧘</label>
+            <label><input type="radio" name="sentimento" value="F"> Desejo de comprar 🛍️</label>
+        </div>
+
+        <button type="submit" class="botao-dev">Enviar sua incrível ideia!</button>
+    </form>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script>
+        const form = document.getElementById("ideaForm");
+
+        const supabase = window.supabase.createClient(
+            "https://ydodnygsdbktjdunerjj.supabase.co",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlkb2RueWdzZGJrdGpkdW5lcmpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2MzIwMTIsImV4cCI6MjA2ODIwODAxMn0._HjSPuXQcWllJjNbraTSk0nuzEEC3QtKxL1v4AXUlt0"
+        );
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const imagem = form.querySelector('input[name="imagem"]:checked')?.value;
+            const personalidade = form.querySelector('input[name="personalidade"]:checked')?.value;
+            const sentimento = form.querySelector('input[name="sentimento"]:checked')?.value;
+
+            if (!imagem || !personalidade || !sentimento) {
+                alert("Por favor, responda todas as perguntas antes de enviar.");
+                return;
+            }
+
+            const { data, error } = await supabase
+                .from("ideias_cenora")
+                .insert([{ personalidade, sentimento, imagem }]);
+
+            if (error) {
+                console.error("Erro:", error.message);
+                alert("Erro ao enviar ideia: " + error.message);
+            } else {
+                alert("Ideia enviada com sucesso!");
+                form.reset();
+            }
+        });
+    </script>
+</body>
+ 
+</html>

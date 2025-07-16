@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zynora - Login</title>
+  <link rel="stylesheet" href="stylelo.css" />
+</head>
+<body>
+  <div class="container">
+    <main class="login-container">
+      <header>
+            <div class="logo-container">
+        <img src="./zynoralogo-removebg-preview.png" alt="zynora.ai" class="logo">
+        <strong>
+            <h1 class="neon-text">Zynora</h1>
+        </strong>
+    </div>
+        <p class="subtitle">Novas ideias para novos mercados</p>
+      </header>
+ 
+      <nav class="tabs" aria-label="Escolha de perfil">
+        <button id="tab-contratante" class="active" onclick="showForm('contratante')">Sou Contratante</button>
+        <button id="tab-programador" onclick="showForm('programador')">Sou Programador</button>
+      </nav>
+ 
+      <section id="form-contratante" class="login-form">
+        <input type="email" placeholder="Email do contratante" required />
+        <input type="password" placeholder="Senha" required />
+ 
+        <label class="form-label" for="objetivo">Minha missão:</label>
+        <select id="objetivo" required>
+          <option value="" disabled selected>Escolha um objetivo</option>
+          <option>Quero criar um site simples</option>
+          <option>Preciso de um sistema completo</option>
+          <option>Quero automatizar processos</option>
+        </select>
+ 
+        <button class="neon-glow" onclick="window.location.href='cliente.html'">Entrar como Contratante</button>
+      </section>
+ 
+      <section>
+        <form id="form-programador" class="login-form hidden">
+          <input id="email" type="email" placeholder="Email do programador" required />
+          <input id="senha-email" type="password" placeholder="Senha" required />
+          <fieldset id='competencia' class="competence-level">
+            <legend class="form-label">Grau de competência:</legend>
+            <label><input type="radio" name="nivel" value="junior" required /><span>Júnior</span></label>
+            <label><input type="radio" name="nivel" value="pleno" /><span>Pleno</span></label>
+            <label><input type="radio" name="nivel" value="senior" /><span>Sênior</span></label>
+            <label><input type="radio" name="nivel" value="especialista" /><span>Especialista</span></label>
+          </fieldset>
+          <button onclick="insertData()">Entrar como Programador</button>
+        </form>
+      </section>
+    </main>
+  </div>
+ 
+  <div class="particles" aria-hidden="true"></div>
+ 
+  <script>
+    const SUPABASE_URL = 'https://tryjnaucxsqvnjevfsmv.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRyeWpuYXVjeHNxdm5qZXZmc212Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1MTMzODIsImV4cCI6MjA2ODA4OTM4Mn0.uJOaWeRACLJEOQaINJRytmZ_TLFicnXnCeBaQC683nE';
+ 
+ 
+    const GetUsers = async () => {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/users_cenora`, {
+        method: 'GET',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+ 
+      const data = await response.json();
+      console.log(data);
+    };
+ 
+    GetUsers();
+ 
+    const insertData = async () => {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/users_cenora`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({
+          email: document.getElementById('email').value,
+          competencia: document.querySelector('input[name="nivel"]:checked').value,
+          password: document.getElementById('senha-email').value
+        })
+      });
+ 
+      if (response) {
+        console.log("Dados enviados :3")
+      }
+ 
+      const inserted = await response.json();
+      console.log(inserted);
+    };
+ 
+  </script>
+ 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabContratante = document.getElementById("tab-contratante");
+      const tabProgramador = document.getElementById("tab-programador");
+      const formContratante = document.getElementById("form-contratante");
+      const formProgramador = document.getElementById("form-programador");
+ 
+      window.showForm = (type) => {
+        const isContratante = type === "contratante";
+        formContratante.classList.toggle("hidden", !isContratante);
+        formProgramador.classList.toggle("hidden", isContratante);
+        tabContratante.classList.toggle("active", isContratante);
+        tabProgramador.classList.toggle("active", !isContratante);
+      };
+    });
+ 
+    const formProgramador = document.getElementById("form-programador");
+    formProgramador.addEventListener("submit", (e) => {
+      e.preventDefault()
+ 
+      const nomeC = document.querySelector('input[name="nivel"]:checked').value
+      localStorage.setItem("compet", nomeC);
+ 
+      setTimeout(() => {
+        window.location.href = './progra.html'
+      }, 500 );
+    })
+ 
+    function initParticles() {
+      const container = document.querySelector(".particles");
+      const total = 80;
+      const particles = [];
+ 
+      for (let i = 0; i < total; i++) {
+        const p = document.createElement("div");
+        p.classList.add("particle");
+ 
+        const size = Math.random() * 3 + 1;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.left = `${Math.random() * 100}%`;
+        p.style.top = `${Math.random() * 100}%`;
+        p.dataset.speed = Math.random() * 0.5 + 0.1;
+ 
+        container.appendChild(p);
+        particles.push(p);
+      }
+ 
+      animateParticles(particles);
+    }
+ 
+    function animateParticles(particles) {
+      function update() {
+        particles.forEach(p => {
+          let y = parseFloat(p.style.top);
+          let speed = parseFloat(p.dataset.speed);
+          y -= speed;
+ 
+          if (y < -2) {
+            y = 100 + Math.random() * 5;
+            p.style.left = `${Math.random() * 100}%`;
+          }
+ 
+          p.style.top = `${y}%`;
+        });
+ 
+        requestAnimationFrame(update);
+      }
+ 
+      update();
+    }
+ 
+    // Certifique-se de que isso roda ao carregar a página:
+    document.addEventListener("DOMContentLoaded", () => {
+      // ... seu código de tabs já aqui ...
+      initParticles();
+    });
+  </script>
+ 
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+ 
+</body>
+ 
+ 
+</html>

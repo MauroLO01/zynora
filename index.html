@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zynora</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+ 
+<body>
+  <header>
+    <div class="logo-container">
+        <img src="./zynoralogo-removebg-preview.png" alt="zynora.ai" class="logo">
+        <strong>
+            <h1 class="titulo-site">Zynora</h1>
+        </strong>
+    </div>
+    <p>Novas ideias para novos mercados!</p>
+    <a class="btn" onclick="" href=".//login.html">Login</a>
+  </header>
+ 
+  <main>
+    <section id="quem-somos">
+      <h2>Quem somos?</h2>
+      <p class="subtitle">Tecnologia e automação digital</p>
+      <p class="description">
+        A Zynora é a ponte entre você e o futuro digital. Nossa plataforma usa inteligência artificial para facilitar a
+        comunicação e interação entre você e programadores.
+      </p>
+    </section>
+ 
+    <section id="servicos">
+      <h2>O que oferecemos?</h2>
+      <div class="services">
+        <div class="service-card">
+          <h3><i class="fas fa-lightbulb"></i> Inovações tecnológicas</h3>
+          <p>Sites modernos criados por pessoas reais, com toque humano e precisão técnica.</p>
+        </div>
+        <div class="service-card">
+          <h3><i class="fas fa-code"></i> Projetos promissores</h3>
+          <p>Nossos programadores estão sempre prontos para transformar suas ideias em realidade.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+ 
+</body>
+ 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabContratante = document.getElementById("tab-contratante");
+    const tabProgramador = document.getElementById("tab-programador");
+    const formContratante = document.getElementById("form-contratante");
+    const formProgramador = document.getElementById("form-programador");
+ 
+    window.showForm = (type) => {
+      const isContratante = type === "contratante";
+      formContratante.classList.toggle("hidden", !isContratante);
+      formProgramador.classList.toggle("hidden", isContratante);
+      tabContratante.classList.toggle("active", isContratante);
+      tabProgramador.classList.toggle("active", !isContratante);
+    };
+ 
+    // Inicia partículas
+    initParticles();
+  });
+ 
+  function initParticles() {
+    const container = document.querySelector(".particles");
+    const total = 80;
+    const particles = [];
+ 
+    for (let i = 0; i < total; i++) {
+      const p = document.createElement("div");
+      p.classList.add("particle");
+ 
+      const size = Math.random() * 3 + 1;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.left = `${Math.random() * 100}%`;
+      p.style.top = `${Math.random() * 100}%`;
+      p.dataset.speed = Math.random() * 0.5 + 0.1;
+ 
+      container.appendChild(p);
+      particles.push(p);
+    }
+ 
+    animateParticles(particles);
+  }
+ 
+  function animateParticles(particles) {
+    function update() {
+      particles.forEach(p => {
+        let y = parseFloat(p.style.top);
+        let speed = parseFloat(p.dataset.speed);
+        y -= speed;
+ 
+        if (y < -2) {
+          y = 100 + Math.random() * 5;
+          p.style.left = `${Math.random() * 100}%`;
+        }
+ 
+        p.style.top = `${y}%`;
+      });
+ 
+      requestAnimationFrame(update);
+    }
+ 
+    update();
+  }
+</script>
+ 
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+ 
+</html>
